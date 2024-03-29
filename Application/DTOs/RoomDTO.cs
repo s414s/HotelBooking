@@ -20,6 +20,8 @@ public class RoomDTO
         };
     }
 
+    public Room MapToDomainEntity() => new(Storey, Enum.Parse<RoomTypes>(Type, true));
+
     public override string ToString()
         => $"Id: {Id}, Storey: {Storey}, Type: {Type}, Capacity: {Capacity}";
 }

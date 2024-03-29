@@ -4,5 +4,5 @@ namespace Application.Contracts;
 
 public interface IHotelService
 {
-    void CreateNewHotel(HotelDTO hotel);
+    IEnumerable<HotelDTO> GetAll();
 }

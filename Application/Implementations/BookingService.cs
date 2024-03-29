@@ -21,25 +21,44 @@ public class BookingService : IBookingService
         _bookingsRepo = bookingsRepo;
     }
 
-    public void BookRoomForGuest(Guid roomId, IEnumerable<string> guestNames, DateOnly from, DateOnly until)
+    public void BookRoom(Guid roomId, IEnumerable<string> guestNames, DateOnly from, DateOnly until)
     {
-        var room = _roomsRepo.GetByID(roomId) ?? throw new ApplicationException("the room does not exist");
+        //var room = _roomsRepo.GetByID(roomId) ?? throw new ApplicationException("the room does not exist");
+        var room = _hotelsRepo
+            .GetAll()
+            .SelectMany(x => x.Rooms)
+            .FirstOrDefault(x => x.Id == roomId)
+            ?? throw new ApplicationException("the room does not exist");
 
         if (!room.IsAvailableBetweenDates(from, until))
-            throw new ApplicationException("the room does not exist");
+            throw new ApplicationException("the room is not available");
 
-        room.Bookings = room.Bookings.Append(new Booking(from, until, guestNames));
+        room.Bookings = room.Bookings.Append(new Booking(from, until, guestNames)).ToList();
 
-        _roomsRepo.Update(room);
-        _roomsRepo.SaveChanges();
+        //_roomsRepo.Update(room);
+        _hotelsRepo.SaveChanges();
     }
 
     public void DeleteBooking(Guid bookingId)
     {
-        var booking = _bookingsRepo.GetByID(bookingId) ?? throw new ApplicationException("the booking does not exist");
+        //var booking = _bookingsRepo.GetByID(bookingId) ?? throw new ApplicationException("the booking does not exist");
+        var room = _hotelsRepo
+            .GetAll()
+            .SelectMany(x => x.Rooms)
+            .FirstOrDefault(x => x.Bookings.Any(y => y.Id == bookingId))
+            ?? throw new ApplicationException("the booking does not exist");
 
-        _bookingsRepo.Update(booking);
-        _bookingsRepo.SaveChanges();
+        room.Bookings = room.Bookings.Where(x => x.Id != bookingId).ToList();
+        _hotelsRepo.SaveChanges();
+    }
+
+    public IEnumerable<BookingDTO> GetAll()
+    {
+        return _hotelsRepo
+            .GetAll()
+            .SelectMany(x => x.Rooms)
+            .SelectMany(x => x.Bookings)
+            .Select(x => BookingDTO.MapFromDomainEntity(x));
     }
 
     public IEnumerable<BookingDTO> GetBookingsOfMonth(int month, int year, Guid? hotelId)

@@ -8,6 +8,7 @@ public class BookingDTO
     public DateOnly From { get; set; }
     public DateOnly Until { get; set; }
     public IEnumerable<string> GuestNames { get; set; } = [];
+    public string HotelName { get; set; } = string.Empty;
     public static BookingDTO MapFromDomainEntity(Booking booking)
     {
         return new BookingDTO
@@ -20,5 +21,5 @@ public class BookingDTO
     }
 
     public override string ToString()
-        => $"Id: {Id}, From: {From}, To: {Until}, Guests: {string.Join(", ", GuestNames)}";
+        => $"Id: {Id}, From: {From}, To: {Until}, Guests: {string.Join(", ", GuestNames)}, Hotel: {HotelName}";
 }
