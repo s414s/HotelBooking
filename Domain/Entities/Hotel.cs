@@ -1,17 +1,17 @@
 namespace Domain;
 public class Hotel : Entity
 {
-    public string Name { get; set; }
-    public Address Address { get; set; }
-    public IEnumerable<Room> Rooms { get; set; }
-    public IEnumerable<User> Users { get; set; }
+    public string Name { get; set; } = String.Empty;
+    public Address? Address { get; set; }
+    public IEnumerable<Room> Rooms { get; set; } = [];
+    public IEnumerable<User> Users { get; set; } = [];
+
+    public Hotel() { }
     public Hotel(string name, Address address)
     {
         Id = new Guid();
         Name = name;
         Address = address;
-        Rooms = [];
-        Users = [];
     }
 
     public IEnumerable<Room> GetAvailableRoomsBetweenDates(DateOnly start, DateOnly end)

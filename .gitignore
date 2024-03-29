@@ -1,0 +1,25 @@
+.vs/
+.vs/*
+
+# Ignore compiled files
+*.class
+*.jar
+
+# Ignore build directory
+/build/
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+tmp/
+
+# Visual Studio Code directory
+.vscode/
+
+# Visual Studio Code workspace file
+*.code-workspace
+
+.vs/
+.vs/
+/ .vs
