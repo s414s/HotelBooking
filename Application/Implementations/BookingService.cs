@@ -8,17 +8,10 @@ namespace Application.Implementations;
 public class BookingService : IBookingService
 {
     private readonly IRepository<Hotel> _hotelsRepo;
-    private readonly IRepository<Room> _roomsRepo;
-    private readonly IRepository<Booking> _bookingsRepo;
 
-    public BookingService(
-        IRepository<Hotel> hotelsRepo,
-        IRepository<Room> roomsRepo,
-        IRepository<Booking> bookingsRepo)
+    public BookingService(IRepository<Hotel> hotelsRepo)
     {
         _hotelsRepo = hotelsRepo;
-        _roomsRepo = roomsRepo;
-        _bookingsRepo = bookingsRepo;
     }
 
     public void BookRoom(Guid roomId, IEnumerable<string> guestNames, DateOnly from, DateOnly until)
@@ -33,7 +26,7 @@ public class BookingService : IBookingService
         if (!room.IsAvailableBetweenDates(from, until))
             throw new ApplicationException("the room is not available");
 
-        room.Bookings = room.Bookings.Append(new Booking(from, until, guestNames)).ToList();
+        room.Bookings = room.Bookings.Append(new Booking(from, until, guestNames.Select(x => new Guest(x)))).ToList();
 
         //_roomsRepo.Update(room);
         _hotelsRepo.SaveChanges();

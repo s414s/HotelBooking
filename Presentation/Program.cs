@@ -23,6 +23,7 @@ serviceCollection.AddSingleton<IRepository<Hotel>, RepositoryHotelsPersistent>()
 serviceCollection.AddTransient<IUserService, UserService>();
 serviceCollection.AddTransient<IBookingService, BookingService>();
 serviceCollection.AddTransient<IHotelService, HotelService>();
+serviceCollection.AddTransient<IRoomService, RoomService>();
 
 // Presentation
 serviceCollection.AddTransient<IMenuPrinter, MenuPrinter>();
