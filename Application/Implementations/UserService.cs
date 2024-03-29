@@ -28,12 +28,12 @@ public class UserService : IUserService
 
     public UserDTO? SignIn(string username, string password)
     {
-        // TODO - create custom userRepo
-        var user = _usersRepo.GetByUsername(username);
-        if (user?.Password != password)
-        {
-            return null;
-        }
-        return UserDTO.MapFromDomainEntity(user);
+        var user = _usersRepo
+            .GetAll()
+            .FirstOrDefault(x => x.Username == username);
+
+        return user?.Password != password
+            ? null
+            : UserDTO.MapFromDomainEntity(user);
     }
 }

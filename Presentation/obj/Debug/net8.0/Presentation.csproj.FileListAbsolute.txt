@@ -13,3 +13,4 @@ C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\obj
 C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\obj\Debug\net8.0\Presentation.pdb
 C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\obj\Debug\net8.0\Presentation.genruntimeconfig.cache
 C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\obj\Debug\net8.0\ref\Presentation.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\obj\Debug\net8.0\Presentation.csproj.AssemblyReference.cache

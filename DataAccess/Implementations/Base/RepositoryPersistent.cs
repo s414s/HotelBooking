@@ -74,6 +74,6 @@ public class RepositoryPersistent<T> : IRepository<T> where T : Entity
         }
         string payload = File.ReadAllText(_path);
         List<T>? deserializeItems = JsonSerializer.Deserialize<List<T>>(payload);
-        _allItems = deserializeItems ?? new List<T>();
+        _allItems = deserializeItems ?? [];
     }
 }
