@@ -1,0 +1,14 @@
+[
+  {
+    "id": "68b5c2d1-8a22-48c4-9f87-57c2bf7eb74f",
+    "name": "Alberto",
+    "surname": "Salas",
+    "password": "password"
+  },
+  {
+    "id": "9a4c60b1-4d64-40a0-ae0c-8298e8f2a3c7",
+    "name": "Maria",
+    "surname": "Hernandez",
+    "password": "password"
+  }
+]

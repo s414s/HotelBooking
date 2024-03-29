@@ -14,6 +14,7 @@ public class RepositoryPersistent<T> : IRepository<T> where T : Entity
     {
         _storageFileName = jsonFileName;
         _path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LocalStorage", _storageFileName);
+        //_path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"LocalStorage\\{_storageFileName}");
         GetDeserializedItems();
     }
 
