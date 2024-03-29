@@ -1,0 +1,15 @@
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\bin\Debug\net8.0\Presentation.exe
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\bin\Debug\net8.0\Presentation.deps.json
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\bin\Debug\net8.0\Presentation.runtimeconfig.json
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\bin\Debug\net8.0\Presentation.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\bin\Debug\net8.0\Presentation.pdb
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\obj\Debug\net8.0\Presentation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\obj\Debug\net8.0\Presentation.AssemblyInfoInputs.cache
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\obj\Debug\net8.0\Presentation.AssemblyInfo.cs
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\obj\Debug\net8.0\Presentation.csproj.CoreCompileInputs.cache
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\obj\Debug\net8.0\Presentation.sourcelink.json
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\obj\Debug\net8.0\Presentation.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\obj\Debug\net8.0\refint\Presentation.dll
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\obj\Debug\net8.0\Presentation.pdb
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\obj\Debug\net8.0\Presentation.genruntimeconfig.cache
+C:\Users\Alberto\Documents\AlbertoSalas\Codigo\GIT\HotelBooking\Presentation\obj\Debug\net8.0\ref\Presentation.dll

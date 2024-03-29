@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "iTHJX2F7yom5Y8y7g6C75jKCQOO9F6CgU6Noyygg1eDVkpQ1/w2wKZtNR1tqPBPF2fFdfNyGpGrpptZeHA7ZCQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Alberto\\Documents\\AlbertoSalas\\Codigo\\GIT\\HotelBooking\\Presentation\\Presentation.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Alberto\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "C:\\Users\\Alberto\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
