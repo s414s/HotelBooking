@@ -29,7 +29,7 @@ public class UserService : IUserService
     public UserDTO? SignIn(string username, string password)
     {
         // TODO - create custom userRepo
-        var user = _usersRepo.GetByID(username);
+        var user = _usersRepo.GetByUsername(username);
         if (user?.Password != password)
         {
             return null;
