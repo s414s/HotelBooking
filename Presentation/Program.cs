@@ -33,8 +33,8 @@ var serviceProvider = serviceCollection.BuildServiceProvider();
 var usersStorage = serviceProvider.GetService<IRepository<User>>();
 var hotelsStorage = serviceProvider.GetService<IRepository<Hotel>>();
 
-var ussss = usersStorage.GetAll();
-var hotell = hotelsStorage.GetAll();
+//var ussss = usersStorage.GetAll();
+//var hotell = hotelsStorage.GetAll();
 
 if(usersStorage?.GetAll().Count() == 0)
 {

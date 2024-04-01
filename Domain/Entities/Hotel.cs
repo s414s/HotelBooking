@@ -10,7 +10,7 @@ public class Hotel : Entity
     public Hotel(string name, string address, Cities city)
     {
         Id = Guid.NewGuid();
-        Name = name;
+        Name = name.ToLower();
         Address = address;
         City = city;
     }

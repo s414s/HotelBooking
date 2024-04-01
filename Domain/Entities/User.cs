@@ -13,8 +13,8 @@ public class User : Entity
     public User(string name, string surname, string password)
     {
         Id = Guid.NewGuid();
-        Name = name;
-        Surname = surname;
+        Name = name.ToLower();
+        Surname = surname.ToLower();
         Password = password;
     }
 }
