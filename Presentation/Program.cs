@@ -54,7 +54,7 @@ if(hotelsStorage?.GetAll().Count() == 0)
         ] }
     );
 
-    hotelsStorage.Add(new Hotel { Id = new Guid(), Name = "melia", Address = "melia address", City = Cities.Zaragoza, Rooms =
+    hotelsStorage.Add(new Hotel { Id = Guid.NewGuid(), Name = "melia", Address = "melia address", City = Cities.Zaragoza, Rooms =
         [
             new Room(1, RoomTypes.Single),
             new Room(1, RoomTypes.Double),
