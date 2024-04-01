@@ -12,7 +12,7 @@ public class Room : Entity
     public Room() { }
     public Room(int storey, RoomTypes type = RoomTypes.Single)
     {
-        Id = new Guid();
+        Id = Guid.NewGuid();
         Storey = storey;
         Type = type;
     }

@@ -7,6 +7,7 @@ public class Booking : Entity
     public Booking() { }
     public Booking(DateOnly start, DateOnly end, IEnumerable<Guest> guests)
     {
+        Id = Guid.NewGuid();
         Start = start;
         End = end;
         Guests = guests;

@@ -3,14 +3,16 @@ public class Hotel : Entity
 {
     public string Name { get; set; } = String.Empty;
     public string Address { get; set; } = String.Empty;
+    public Cities City { get; set; }
     public IEnumerable<Room> Rooms { get; set; } = [];
 
     public Hotel() { }
-    public Hotel(string name, string address)
+    public Hotel(string name, string address, Cities city)
     {
-        Id = new Guid();
+        Id = Guid.NewGuid();
         Name = name;
         Address = address;
+        City = city;
     }
 
     public IEnumerable<Room> GetAvailableRoomsBetweenDates(DateOnly start, DateOnly end)
