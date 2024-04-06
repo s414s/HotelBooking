@@ -63,6 +63,7 @@ public class MenuPrinter : IMenuPrinter
 
     private void AskForOption(List<int> functions)
     {
+        Console.Clear();
         Console.WriteLine("OPTIONS");
         foreach (var key in functions)
         {
@@ -80,6 +81,7 @@ public class MenuPrinter : IMenuPrinter
 
     private void AuthenticateUser()
     {
+        Console.Clear();
         Console.WriteLine("Authenticate your user");
         while (true)
         {
@@ -100,6 +102,7 @@ public class MenuPrinter : IMenuPrinter
 
     private void PrintAddNewBooking()
     {
+        Console.Clear();
         var allHotels = _hotelService.GetAll().ToArray();
         ItemsLogger<HotelDTO>.PrintItems(allHotels);
         var selectedHotelIndex = ValueSeeker.AskForInteger("Select the hotel for this booking:", allHotels.Select((x, i) => i + 1).ToList() ?? []);
@@ -129,6 +132,7 @@ public class MenuPrinter : IMenuPrinter
 
     private void PrintDeleteBooking()
     {
+        Console.Clear();
         var allBookings = _bookingService.GetAll().ToArray();
         ItemsLogger<BookingDTO>.PrintItems(allBookings);
         var selectedBookingIndex = ValueSeeker.AskForInteger("Select the booking you want to delete:", allBookings.Select((x, i) => i + 1).ToList() ?? []);
@@ -147,22 +151,15 @@ public class MenuPrinter : IMenuPrinter
 
     private void PrintGetAllBookings()
     {
+        Console.Clear();
         var bookings = _bookingService.GetAll();
-        Console.WriteLine("Here are the bookings");
-        ItemsLogger<BookingDTO>.PrintItems(bookings);
-    }
-
-    private void PrintGetAllBookingsInMonth()
-    {
-        var selectedDate = ValueSeeker.AskForDate("Select any day of the month you want to retrieve:");
-
-        var bookings = _bookingService.GetBookingsOfMonth(selectedDate.Year, selectedDate.Month, null);
         Console.WriteLine("Here are the bookings");
         ItemsLogger<BookingDTO>.PrintItems(bookings);
     }
 
     private void Logout()
     {
+        Console.Clear();
         _activeUser = null;
         Console.WriteLine("Logged out");
     }
