@@ -76,7 +76,16 @@ public class MenuPrinter : IMenuPrinter
 
         }
         int chosenOption = ValueSeeker.AskForInteger("Choose an option", functions);
-        ExecuteFunction(chosenOption);
+
+        try
+        {
+            ExecuteFunction(chosenOption);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Order Could not be Executed");
+            Console.WriteLine(ex is ApplicationException ? ex : "System error");
+        }
     }
 
     private void AuthenticateUser()
@@ -92,7 +101,6 @@ public class MenuPrinter : IMenuPrinter
             {
                 _activeUser = activeUser;
                 return;
-                // break;
             }
             Console.WriteLine("Username or password incorrect, try again");
         }
@@ -118,18 +126,10 @@ public class MenuPrinter : IMenuPrinter
 
         var clientName = ValueSeeker.AskForString("Insert client/s name/s separated by a comma:");
 
-        try
-        {
-            _bookingService.BookRoom(availableRooms[selectedRoomIndex-1].Id, clientName.Split(","), startBookingDate, endBookingDate);
-            Console.WriteLine("Booking Created Successfully");
-            Console.WriteLine("Press any key to continue");
-            Console.ReadKey();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("Booking Could not be Created");
-            Console.WriteLine(ex is ApplicationException ? ex : "System error");
-        }
+        _bookingService.BookRoom(availableRooms[selectedRoomIndex-1].Id, clientName.Split(","), startBookingDate, endBookingDate);
+        Console.WriteLine("Booking Created Successfully");
+        Console.WriteLine("Press any key to continue");
+        Console.ReadKey();
     }
 
     private void PrintDeleteBooking()
@@ -139,26 +139,8 @@ public class MenuPrinter : IMenuPrinter
         ItemsLogger<BookingDTO>.PrintItems(allBookings);
         var selectedBookingIndex = ValueSeeker.AskForInteger("Select the booking you want to delete:", allBookings.Select((x, i) => i + 1).ToList() ?? []);
 
-        try
-        {
-            _bookingService.DeleteBooking(allBookings[selectedBookingIndex-1].Id);
-            Console.WriteLine("Order Deleted Successfully");
-            Console.WriteLine("Press any key to continue");
-            Console.ReadKey();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("Order Could not be Deleted");
-            Console.WriteLine(ex is ApplicationException ? ex : "System error");
-        }
-    }
-
-    private void PrintGetAllBookings()
-    {
-        Console.Clear();
-        var bookings = _bookingService.GetAll();
-        Console.WriteLine("Here are the bookings");
-        ItemsLogger<BookingDTO>.PrintItems(bookings);
+        _bookingService.DeleteBooking(allBookings[selectedBookingIndex-1].Id);
+        Console.WriteLine("Order Deleted Successfully");
         Console.WriteLine("Press any key to continue");
         Console.ReadKey();
     }
