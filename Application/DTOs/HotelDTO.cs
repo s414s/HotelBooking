@@ -19,5 +19,5 @@ public class HotelDTO
         };
     }
     public override string ToString()
-        => $"Id: {Id}, Name: {Name}, Location: {City}, Rooms: {NumberOfRooms}";
+        => $"Name: {Name}, Location: {City}, Rooms: {NumberOfRooms}";
 }

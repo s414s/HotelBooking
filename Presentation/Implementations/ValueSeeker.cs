@@ -6,7 +6,8 @@ public static class ValueSeeker
 {
     public static DateOnly AskForDate(string consoleText)
     {
-        Console.WriteLine($"{consoleText}.");
+        Console.WriteLine($"{consoleText}");
+        Console.WriteLine("It must have the following format dd/MM/yyyy");
         while (true)
         {
             (DateOnly validatedInput, string? error) = InputValidator.ParseDate(Console.ReadLine() ?? "");
@@ -14,14 +15,15 @@ public static class ValueSeeker
             {
                 return validatedInput;
             }
-            Console.WriteLine(error, "Please make sure your input is correct");
+            Console.WriteLine(error);
+            Console.WriteLine("Please make sure your input is correct");
         }
     }
 
     public static int AskForInteger(string consoleText, List<int> allowedRange)
     {
         var values = string.Join(", ", allowedRange);
-        Console.WriteLine($"{consoleText}.");
+        Console.WriteLine($"{consoleText}");
         Console.WriteLine($"It must be one of the following integers: {values}.");
         while (true)
         {
@@ -37,7 +39,7 @@ public static class ValueSeeker
     public static List<int> AskForIntegers(string consoleText, List<int> allowedRange)
     {
         var allowedValues = string.Join(", ", allowedRange);
-        Console.WriteLine($"{consoleText}.");
+        Console.WriteLine($"{consoleText}");
         Console.WriteLine($"It must be one or more numbers, followed my a coma: {allowedValues}.");
         while (true)
         {
@@ -52,7 +54,7 @@ public static class ValueSeeker
 
     public static decimal AskForDecimal(string consoleText, int minValue)
     {
-        Console.WriteLine($"{consoleText}.");
+        Console.WriteLine($"{consoleText}");
         Console.WriteLine($"It must be a decimal number greater or equal to {minValue}.");
         while (true)
         {

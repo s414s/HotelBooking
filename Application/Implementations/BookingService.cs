@@ -17,16 +17,25 @@ public class BookingService : IBookingService
     public void BookRoom(Guid roomId, IEnumerable<string> guestNames, DateOnly from, DateOnly until)
     {
         //var room = _roomsRepo.GetByID(roomId) ?? throw new ApplicationException("the room does not exist");
-        var room = _hotelsRepo
+
+        //var room = _hotelsRepo
+        //    .GetAll()
+        //    .SelectMany(x => x.Rooms)
+        //    .FirstOrDefault(x => x.Id == roomId)
+        //    ?? throw new ApplicationException("the room does not exist");
+
+        var hotel = _hotelsRepo
             .GetAll()
-            .SelectMany(x => x.Rooms)
-            .FirstOrDefault(x => x.Id == roomId)
+            .FirstOrDefault(x => x.Rooms.Any(y => y.Id == roomId));
+
+        var room = hotel?.Rooms.FirstOrDefault(x => x.Id == roomId)
             ?? throw new ApplicationException("the room does not exist");
 
         if (!room.IsAvailableBetweenDates(from, until))
             throw new ApplicationException("the room is not available");
 
-        room.Bookings = room.Bookings.Append(new Booking(from, until, guestNames.Select(x => new Guest(x)))).ToList();
+        room.Bookings = room.Bookings
+            .Append(new Booking(from, until, guestNames.Select(x => new Guest(x)), hotel.Name)).ToList();
 
         //_roomsRepo.Update(room);
         _hotelsRepo.SaveChanges();

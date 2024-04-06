@@ -11,7 +11,6 @@ public class MenuPrinter : IMenuPrinter
     private readonly IBookingService _bookingService;
     private readonly IRoomService _roomService;
     private readonly List<Functionality> _functions;
-    private readonly List<int> _tables;
     private UserDTO? _activeUser;
     private bool _exit;
 
@@ -26,15 +25,14 @@ public class MenuPrinter : IMenuPrinter
         _bookingService = bookingService;
         _roomService = roomService;
 
-        _tables = new() { 1, 2, 3, 4, 5 };
-        _functions = new(){
+        _functions = [
             new () { Key = 1, Description = "Sign In", Function = AuthenticateUser },
             new () { Key = 2, Description = "Add new booking", Function = PrintAddNewBooking },
             new () { Key = 3, Description = "Delete a booking", Function = PrintDeleteBooking },
-            new () { Key = 4, Description = "Print all bookings in a month", Function = PrintGetAllBookingsInMonth },
+            new () { Key = 4, Description = "Print all bookings", Function = PrintGetAllBookings },
             new () { Key = 5, Description = "Sign Out", Function = Logout },
             new () { Key = 6, Description = "Exit", Function = Exit }
-        };
+        ];
     }
 
     public void Run()
@@ -53,15 +51,13 @@ public class MenuPrinter : IMenuPrinter
 
     private void PrintSignInScreen()
     {
-        List<int> options = new() { 1, 8 };
+        List<int> options = _functions.Where(x => x.Key == 1 || x.Key == 6).Select(x => x.Key).ToList();
         AskForOption(options);
     }
 
     private void PrintMainScreen(string role)
     {
-        List<int> options = role == "admin"
-            ? new() { 2, 3, 4, 5, 6, 7, 8 }
-            : new() { 2, 3, 4, 5, 6, 7, 8 };
+        List<int> options = _functions.Where(x => x.Key != 1).Select(x => x.Key).ToList();
         AskForOption(options);
     }
 
@@ -117,7 +113,7 @@ public class MenuPrinter : IMenuPrinter
 
         var selectedRoomIndex = ValueSeeker.AskForInteger("Select a room for your booking:", availableRooms.Select((x, i) => i + 1).ToList() ?? []);
 
-        var clientName = ValueSeeker.AskForString("Insert client name/s separated by a comma:");
+        var clientName = ValueSeeker.AskForString("Insert client/s name/s separated by a comma:");
 
         try
         {
@@ -147,6 +143,13 @@ public class MenuPrinter : IMenuPrinter
             Console.WriteLine("Order Could not be Deleted");
             Console.WriteLine(ex is ApplicationException ? ex : "System error");
         }
+    }
+
+    private void PrintGetAllBookings()
+    {
+        var bookings = _bookingService.GetAll();
+        Console.WriteLine("Here are the bookings");
+        ItemsLogger<BookingDTO>.PrintItems(bookings);
     }
 
     private void PrintGetAllBookingsInMonth()
