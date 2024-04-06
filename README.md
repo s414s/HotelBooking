@@ -25,6 +25,16 @@ https://learn.microsoft.com/es-es/dotnet/core/docker/build-container?tabs=window
 docker build --rm -t hotelbookingapi:v1 .
 docker run -it hotelbookingapi:v1
 
+docker run -v C:/Users/Alberto/volumetest:/Presentation/bin/Debug/net8.0/LocalStorage -it 8b83eb49b384
+docker run -v C:/Users/Alberto/volumetest:/LocalStorage/ -it 8b83eb49b384
+
+
+docker run -v ${PWD}\volume:/LocalStorage -it 8b83eb49b384
+
+docker run -v $PWD/volume:/LocalStorage/ -it 8b83eb49b384
+docker run -v ${PWD}/volume:/LocalStorage/ -it 8b83eb49b384
+
+
 docker build --rm -t new-net/hotelbookingapi:v1 .
 
 docker image ls | grap cloud-hotel
