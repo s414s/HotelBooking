@@ -16,14 +16,6 @@ public class BookingService : IBookingService
 
     public void BookRoom(Guid roomId, IEnumerable<string> guestNames, DateOnly from, DateOnly until)
     {
-        //var room = _roomsRepo.GetByID(roomId) ?? throw new ApplicationException("the room does not exist");
-
-        //var room = _hotelsRepo
-        //    .GetAll()
-        //    .SelectMany(x => x.Rooms)
-        //    .FirstOrDefault(x => x.Id == roomId)
-        //    ?? throw new ApplicationException("the room does not exist");
-
         var hotel = _hotelsRepo
             .GetAll()
             .FirstOrDefault(x => x.Rooms.Any(y => y.Id == roomId));
@@ -37,13 +29,11 @@ public class BookingService : IBookingService
         room.Bookings = room.Bookings
             .Append(new Booking(from, until, guestNames.Select(x => new Guest(x)), hotel.Name)).ToList();
 
-        //_roomsRepo.Update(room);
         _hotelsRepo.SaveChanges();
     }
 
     public void DeleteBooking(Guid bookingId)
     {
-        //var booking = _bookingsRepo.GetByID(bookingId) ?? throw new ApplicationException("the booking does not exist");
         var room = _hotelsRepo
             .GetAll()
             .SelectMany(x => x.Rooms)
@@ -72,5 +62,17 @@ public class BookingService : IBookingService
             .Where(x => (x.Start.Month == month && x.Start.Year == year)
                 || (x.End.Month == month && x.End.Year == year))
             .Select(x => BookingDTO.MapFromDomainEntity(x));
+    }
+
+    public IEnumerable<BookingDTO> GetFilteredBookings(string hotelName)
+    {
+        var hotel = _hotelsRepo
+            .GetAll()
+            .FirstOrDefault(x => x.Name.Equals(hotelName, StringComparison.OrdinalIgnoreCase));
+
+        return hotel?.Rooms
+            .SelectMany(x => x.Bookings)
+            .Select(x => BookingDTO.MapFromDomainEntity(x))
+            ?? [];
     }
 }

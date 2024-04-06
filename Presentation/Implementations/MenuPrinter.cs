@@ -29,7 +29,7 @@ public class MenuPrinter : IMenuPrinter
             new () { Key = 1, Description = "Sign In", Function = AuthenticateUser },
             new () { Key = 2, Description = "Add new booking", Function = PrintAddNewBooking },
             new () { Key = 3, Description = "Delete a booking", Function = PrintDeleteBooking },
-            new () { Key = 4, Description = "Print all bookings", Function = PrintGetAllBookings },
+            new () { Key = 4, Description = "Print all bookings by hotel", Function = PrintFilteredBookingsByHotels },
             new () { Key = 5, Description = "Sign Out", Function = Logout },
             new () { Key = 6, Description = "Exit", Function = Exit }
         ];
@@ -122,6 +122,8 @@ public class MenuPrinter : IMenuPrinter
         {
             _bookingService.BookRoom(availableRooms[selectedRoomIndex-1].Id, clientName.Split(","), startBookingDate, endBookingDate);
             Console.WriteLine("Booking Created Successfully");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
         }
         catch (Exception ex)
         {
@@ -141,6 +143,8 @@ public class MenuPrinter : IMenuPrinter
         {
             _bookingService.DeleteBooking(allBookings[selectedBookingIndex-1].Id);
             Console.WriteLine("Order Deleted Successfully");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
         }
         catch (Exception ex)
         {
@@ -155,6 +159,26 @@ public class MenuPrinter : IMenuPrinter
         var bookings = _bookingService.GetAll();
         Console.WriteLine("Here are the bookings");
         ItemsLogger<BookingDTO>.PrintItems(bookings);
+        Console.WriteLine("Press any key to continue");
+        Console.ReadKey();
+    }
+
+    private void PrintFilteredBookingsByHotels()
+    {
+        Console.Clear();
+        var hotelName = ValueSeeker.AskForString("Write the hotel room you want to filter your bookings by");
+        var bookings = _bookingService.GetFilteredBookings(hotelName);
+        if (bookings.Any())
+        {
+            Console.WriteLine($"Here are the bookings in {hotelName}:");
+            ItemsLogger<BookingDTO>.PrintItems(bookings);
+        }
+        else
+        {
+            Console.WriteLine($"No bookings found in {hotelName} hotel");
+        }
+        Console.WriteLine("Press any key to continue");
+        Console.ReadKey();
     }
 
     private void Logout()

@@ -77,7 +77,7 @@ public static class ValueSeeker
             {
                 return validatedInput ?? string.Empty;
             }
-            Console.WriteLine(error, "Please make sure your input is a positive integer");
+            Console.WriteLine(error, "Please make sure your input is a valid string");
         }
     }
 }
