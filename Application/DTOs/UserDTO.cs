@@ -14,7 +14,7 @@ public class UserDTO
         {
             Name = Name,
             Surname = Surname,
-            Role = Enum.Parse<Roles>(Role, true),
+            //Role = Enum.Parse<Roles>(Role, true),
         };
     }
 
@@ -24,7 +24,7 @@ public class UserDTO
         {
             Name = user.Name,
             Surname = user.Surname,
-            Role = user.Role.ToString(),
+            //Role = user.Role.ToString(),
         };
     }
 

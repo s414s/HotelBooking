@@ -17,9 +17,10 @@ public class BookingDTO
             From = booking.Start,
             Until = booking.End,
             GuestNames = booking.Guests.Select(g => g.Name),
+            HotelName = booking.HotelName,
         };
     }
 
     public override string ToString()
-        => $"Id: {Id}, From: {From}, To: {Until}, Guests: {string.Join(", ", GuestNames)}, Hotel: {HotelName}";
+        => $"From: {From}, To: {Until}, Guests: {string.Join(", ", GuestNames)}, Hotel: {HotelName}";
 }

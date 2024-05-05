@@ -99,7 +99,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Alberto\\Documents\\AlbertoSalas\\Codigo\\GIT\\HotelBooking\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Alberto\\Documents\\AlbertoSalas\\Codigo\\GIT\\HotelBooking\\Domain\\Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

@@ -12,7 +12,7 @@ public class Room : Entity
     public Room() { }
     public Room(int storey, RoomTypes type = RoomTypes.Single)
     {
-        Id = new Guid();
+        Id = Guid.NewGuid();
         Storey = storey;
         Type = type;
     }
@@ -20,7 +20,7 @@ public class Room : Entity
     public bool IsAvailableBetweenDates(DateOnly start, DateOnly end)
         => !Bookings.Any(x => x.Start >= start && x.End <= end);
 
-    public void Book(DateOnly start, DateOnly end, IEnumerable<Guest> guests)
+    public void Book(DateOnly start, DateOnly end, IEnumerable<Guest> guests, string hotelName)
     {
         if (!IsAvailableBetweenDates(start, end))
             throw new ApplicationException("room is already booked");
@@ -31,6 +31,6 @@ public class Room : Entity
         if (!guests.Any())
             throw new ApplicationException("no guest inserted");
 
-        Bookings = Bookings.Append(new Booking(start, end, guests));
+        Bookings = Bookings.Append(new Booking(start, end, guests, hotelName));
     }
 }

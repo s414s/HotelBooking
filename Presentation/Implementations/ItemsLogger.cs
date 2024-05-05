@@ -10,10 +10,5 @@ public class ItemsLogger<T> where T : class
             Console.WriteLine($"{index}.- {item}");
             index++;
         }
-
-        //for (int i = 0; i < items.Count; i++)
-        //{
-        //    Console.WriteLine($"{i + 1}.- {items[i]}");
-        //}
     }
 }
