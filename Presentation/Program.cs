@@ -11,6 +11,11 @@ Console.WriteLine("Welcome to the Hotel app!");
 
 var serviceCollection = new ServiceCollection();
 
+if (bool.TryParse(Environment.GetEnvironmentVariable("IS_DOCKER"), out var isDocker))
+{
+    Console.WriteLine($"IsDockerEnv {isDocker}");
+}
+
 // ==== Registering services ====
 
 // Repositories
