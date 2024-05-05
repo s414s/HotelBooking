@@ -16,6 +16,9 @@ public class RepositoryPersistent<T> : IRepository<T> where T : Entity
         _path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LocalStorage", _storageFileName);
         //_path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"LocalStorage\\{_storageFileName}");
         GetDeserializedItems();
+
+        Console.WriteLine("Data Access started at:");
+        Console.WriteLine(_path);
     }
 
     public virtual T Add(T entity)
@@ -44,10 +47,10 @@ public class RepositoryPersistent<T> : IRepository<T> where T : Entity
 
     public virtual T Update(T entity)
     {
-        var ingredientIndex = _allItems.FindIndex(x => x.Id == entity.Id);
-        if (ingredientIndex != -1)
+        var itemIndex = _allItems.FindIndex(x => x.Id == entity.Id);
+        if (itemIndex != -1)
         {
-            _allItems[ingredientIndex] = entity;
+            _allItems[itemIndex] = entity;
         }
         else
         {

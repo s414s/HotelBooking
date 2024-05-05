@@ -10,5 +10,11 @@
     "Name": "ana",
     "Surname": "hernandez",
     "Password": "root"
+  },
+  {
+    "Id": "9a4c60b4-4d64-40a0-ae0c-8298e8f2a3c7",
+    "Name": "paco",
+    "Surname": "porras",
+    "Password": "root"
   }
 ]

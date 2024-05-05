@@ -37,6 +37,9 @@ public class MenuPrinter : IMenuPrinter
 
     public void Run()
     {
+        Console.WriteLine("Press any key to continue");
+        Console.ReadKey();
+
         do
         {
             if (_activeUser is null)

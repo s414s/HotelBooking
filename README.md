@@ -21,18 +21,32 @@ dotnet run --project .\Presentation\Presentation.csproj
 ## Docker
 https://learn.microsoft.com/es-es/dotnet/core/docker/build-container?tabs=windows&pivots=dotnet-8-0
 
+Atención! los paths de los volumenes tienen que ser absolutos
 ```
 docker build --rm -t hotelbookingapi:v1 .
 docker run -it hotelbookingapi:v1
+docker run -v myvol1:/App/LocalStorage -it asalasher/hotelbooking:v1
+
+
+
+docker tag local-image:tag username/repository:tag
+docker push username/repository:tag
+
+
+
+
+docker run -v mytestnamedvol3:/App/LocalStorage -it dad9982a2cce
+docker run -v mytestnamedvol13:/App/LocalStorage -it asalasher/hotelbooking:v1
 
 docker run -v C:/Users/Alberto/volumetest:/Presentation/bin/Debug/net8.0/LocalStorage -it 8b83eb49b384
 docker run -v C:/Users/Alberto/volumetest:/LocalStorage/ -it 8b83eb49b384
 
+docker run -v ${PWD}:/App/LocalStorage -it dad9982a2cce 5bdff3909711
 
-docker run -v ${PWD}\volume:/LocalStorage -it 8b83eb49b384
+docker run -v ${PWD}\volume:/App/LocalStorage -it dad9982a2cce
 
-docker run -v $PWD/volume:/LocalStorage/ -it 8b83eb49b384
-docker run -v ${PWD}/volume:/LocalStorage/ -it 8b83eb49b384
+docker run -v $PWD/volume:/LocalStorage/ -it dad9982a2cce
+docker run -v ${PWD}/volume:/LocalStorage/ -it dad9982a2cce
 
 
 docker build --rm -t new-net/hotelbookingapi:v1 .
